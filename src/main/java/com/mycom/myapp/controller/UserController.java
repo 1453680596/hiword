@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import sun.security.util.Password;
 
 @Controller
 @RequestMapping("/user")
@@ -27,10 +28,16 @@ public class UserController {
 
     //登录
     @RequestMapping("/login")
-    public String login(String username ,String password,Model model){
-        model.addAttribute("username",username);
-        model.addAttribute("password",password);
-        return "guide";
+    public String login(User user, Model model,String username){
+        User user2=userService.select(user);
+        if (user2!=null){
+            model.addAttribute("user2",user2);
+            model.addAttribute("username",username);
+            return "selectconsequensce";
+        }
+        else {
+            return "basic";
+        }
         }
 
 

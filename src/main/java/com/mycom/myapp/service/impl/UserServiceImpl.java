@@ -1,6 +1,7 @@
 package com.mycom.myapp.service.impl;
 
 import com.mycom.myapp.mapper.UserDao;
+import com.mycom.myapp.pojo.Customer;
 import com.mycom.myapp.pojo.User;
 import com.mycom.myapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean login(User user){
-        int i =userDao.login(user);
-        return i>0;
+    public User login(User user){
+        return userDao.login(user);
+    }
+
+    @Override
+    public User select(Customer user){
+        return userDao.select(user);
     }
 }
