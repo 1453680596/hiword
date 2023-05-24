@@ -24,8 +24,5 @@ public class UserServiceImpl implements UserService {
         return userDao.login(user);
     }
 
-    @Override
-    public User select(Customer user){
-        return userDao.select(user);
-    }
+
 }

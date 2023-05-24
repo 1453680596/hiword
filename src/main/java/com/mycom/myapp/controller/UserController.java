@@ -29,14 +29,14 @@ public class UserController {
     //登录
     @RequestMapping("/login")
     public String login(User user, Model model,String username){
-        User user2=userService.select(user);
-        if (user2!=null){
-            model.addAttribute("user2",user2);
+        User user1=userService.login(user);
+        if (user1!=null){
+            model.addAttribute("user1",user1);
             model.addAttribute("username",username);
-            return "selectconsequensce";
+            return "guide";
         }
         else {
-            return "basic";
+            return "login";
         }
         }
 
