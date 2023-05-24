@@ -11,6 +11,6 @@
     <title>基本管理功能</title>
 </head>
 <body>
-<a href="basicinfo/toSelect">查找</a>
+<a href="${pageContext.request.contextPath}/basicinfo/toSelect">查找</a>
 </body>
 </html>

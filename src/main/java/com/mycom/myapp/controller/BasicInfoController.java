@@ -17,7 +17,7 @@ public class BasicInfoController {
 
     @RequestMapping("/toBasicInfo")
     public String toBasicInfo(){
-        return "basic";
+        return "select";
     }
 
     //查找

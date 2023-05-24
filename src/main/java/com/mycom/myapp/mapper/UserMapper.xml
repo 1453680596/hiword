@@ -18,8 +18,5 @@
     <select id="login" parameterType="com.mycom.myapp.pojo.User" resultMap ="userMap">
         select * from users where username=#{username} and password=#{password}
     </select>
-    
-    <select id="select" parameterType="com.mycom.myapp.pojo.User" resultMap="userMap">
-        select * from users where username=#{username}
-    </select>
+
 </mapper>

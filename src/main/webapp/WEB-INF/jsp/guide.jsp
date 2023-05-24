@@ -13,6 +13,6 @@
 </head>
 <body>
 <p>欢迎您：${username}！</p>
-<a href="basicinfo/toBasicInfo">进入基本信息管理</a>
+<a href="${pageContext.request.contextPath}/basicinfo/toBasicInfo">进入基本信息管理</a>
 </body>
 </html>

@@ -7,7 +7,7 @@
 <mapper namespace="com.mycom.myapp.mapper.CustomerDao">
     <resultMap id="customerMap" type="com.mycom.myapp.pojo.Customer">
         <id column="id" property="id"/>
-        <result column="username" property="username"/>
+        <result column="name" property="name"/>
         <result column="sex" property="sex"/>
         <result column="grade" property="grade"/>
         <result column="phone" property="phone"/>
@@ -15,7 +15,7 @@
     </resultMap>
 
     <select id="select" parameterType="com.mycom.myapp.pojo.Customer" resultMap="customerMap">
-        select * from customer where username=#{username}
+        select * from customer where name=#{name}
     </select>
 
 </mapper>
