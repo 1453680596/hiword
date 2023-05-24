@@ -24,4 +24,14 @@ public class UserController {
             return "register";
         }
     }
+
+    //登录
+    @RequestMapping("/login")
+    public String login(String username ,String password,Model model){
+        model.addAttribute("username",username);
+        model.addAttribute("password",password);
+        return "guide";
+        }
+
+
 }

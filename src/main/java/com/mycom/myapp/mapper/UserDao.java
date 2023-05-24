@@ -12,4 +12,5 @@ public interface UserDao {
      * @return 返回受影响行数
      */
     int register(User user);
+    int login(User user);
 }
