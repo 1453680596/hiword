@@ -17,7 +17,7 @@ public class BasicInfoController {
 
     @RequestMapping("/toBasicInfo")
     public String toBasicInfo(){
-        return "select";
+        return "basic";
     }
 
     //查找
@@ -30,6 +30,50 @@ public class BasicInfoController {
             return "selectconsequence";
         } else {
             return "select";
+        }
+    }
+
+    //新增用户
+    @RequestMapping("/toInsert")
+    public String toInsert(){
+        return "insert";
+    }
+    @RequestMapping("/insert")
+    public String insert(Customer customer,Model model){
+        Boolean isOK1 = customerService.insert(customer);
+        if (isOK1) {
+            model.addAttribute("customer", customer);
+            return "insertconsequence";
+        } else {
+            return "insert";
+        }
+    }
+
+    //更新用户
+    @RequestMapping("/toUpdate")
+    public String toUpdate(){return "update";}
+    @RequestMapping("/update")
+    public String update(Customer customer,Model model){
+        Boolean isOK2 = customerService.update(customer);
+        if (isOK2){
+            model.addAttribute("customer",customer);
+            return "updateconsequence";
+        }else {
+            return "update";
+        }
+    }
+
+    //删除用户
+    @RequestMapping("/toDelete")
+    public String toDelete(){return "delete";}
+    @RequestMapping("/delete")
+    public String delete(Customer customer,Model model){
+        Customer customer2=customerService.delete(customer);
+        if (customer2!=null){
+            model.addAttribute("customer2",customer2);
+            return "deleteconsequence";
+        }else {
+            return "delete";
         }
     }
 }

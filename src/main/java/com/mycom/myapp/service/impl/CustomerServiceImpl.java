@@ -16,4 +16,22 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer select(Customer customer) {
         return customerDao.select(customer);
     }
+
+    @Override
+    public boolean insert(Customer customer) {
+        int i = customerDao.insert(customer);
+        return i>0;
+    }
+
+    @Override
+    public boolean update(Customer customer){
+        int i = customerDao.update(customer);
+        return i>0;
+    }
+
+    @Override
+    public Customer delete(Customer customer){
+        return customerDao.delete(customer);
+    }
+
 }

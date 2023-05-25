@@ -18,4 +18,33 @@
         select * from customer where name=#{name}
     </select>
 
+    <insert id="insert" parameterType="com.mycom.myapp.pojo.Customer" >
+        insert into customer(name,sex,phone,grade,email) values (#{name},#{sex},#{phone},#{grade},#{email})
+    </insert>
+
+    <update id="update" parameterType="com.mycom.myapp.pojo.Customer">
+        update customer
+        <set>
+        <if test="name!=null and name!=''">
+            name=#{name},
+        </if>
+        <if test="sex!=null and sex!=''">
+            sex=#{sex},
+        </if>
+        <if test="phone!=null and phone!=''">
+            phone=#{phone},
+        </if>
+        <if test="grade!=null and grade!=''">
+            grade=#{grade},
+        </if>
+        <if test="email!=null and email!=''">
+            email=#{email},
+        </if>
+        </set>
+        where id=#{id};
+    </update>
+
+    <delete id="delete" parameterType="com.mycom.myapp.pojo.Customer">
+        delete * from costumer where id=#{id} and name=#{name};
+    </delete>
 </mapper>

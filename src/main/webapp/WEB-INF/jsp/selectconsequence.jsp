@@ -19,5 +19,6 @@
 <p>电话：${customer1.phone}</p>
 <p>客户等级：${customer1.grade}</p>
 <p>电子邮箱：${customer1.email}</p>
+<input type="button" onclick="window.location.href='${pageContext.request.contextPath}/basic';" value="返回首页">
 </body>
 </html>
