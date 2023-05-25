@@ -68,8 +68,8 @@ public class BasicInfoController {
     }
 
     //更新用户
-//    @RequestMapping("/toUpdate")
-//    public String toUpdate(){return "update";}
+    @RequestMapping("/toUpdate")
+    public String toUpdate(){return "update";}
     @RequestMapping("/update")
     public String update(Customer customer,Model model){
         Boolean isOK2 = customerService.update(customer);

@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored ="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>查询结果</title>
@@ -24,29 +25,38 @@
         <th>电话</th>
         <th>客户等级</th>
         <th>电子邮箱</th>
+        <th>操作</th>
     </tr>
-    <tr align="center">
-<%--        <td><% out.print(bookList.get(i).getB_id()); %></td>--%>
-<%--        <td><% out.print(bookList.get(i).getB_name()); %></td>--%>
-<%--        <td><% out.print(bookList.get(i).getB_author()); %></td>--%>
-<%--        <td><% out.print(bookList.get(i).getB_price()); %></td>--%>
-<%--        <td><% out.print(bookList.get(i).getB_content()); %></td>--%>
-        <td> <c:forEach items="${customerList}" var="customer">
-                ${customer.name}<br/>
-                ${customer.sex}<br/>
-                ${customer.phone}<br/>
-                ${customer.grade}<br/>
-                ${customer.email}<br/>
-        </c:forEach>
-            <button>修改</button>
-            <button>删除</button>
-        </td>
-    </tr>
-    <tr>
-        <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="submit" name="update" value="信息更新" formaction="${pageContext.request.contextPath}/basicinfo/update"/>&nbsp;&nbsp;
-            <input type="submit" name="delete" value="删除该用户" formaction="${pageContext.request.contextPath}/basicinfo/delete"/>
-    </tr>
+
+
+    <c:forEach items="${customerList}" var="customer">
+        <tr align="center">
+            <td> ${customer.name}</td>
+            <td> ${customer.sex}</td>
+            <td> ${customer.phone}</td>
+            <td> ${customer.grade}</td>
+            <td> ${customer.email}</td>
+            <td>
+                <input type="button" name="return"
+                       onclick="window.location.href=
+                               '${pageContext.request.contextPath}/basicinfo/toUpdate?id=${customer.id}&name=${customer.name}&sex=${customer.sex}&phone=${customer.phone}&grade=${customer.grade}&email=${customer.email}'"
+                       value="修改">
+                <input type="button" name="return"
+                       onclick="window.location.href='${pageContext.request.contextPath}/basicinfo/delete?id=${customer.id}'"
+                       value="删除">
+            </td>
+        </tr>
+    </c:forEach>
+
+    <%--    <tr>--%>
+    <%--        <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">--%>
+    <%--            <input type="submit" name="update" value="信息更新"--%>
+    <%--                   formaction=""/>&nbsp;&nbsp;--%>
+    <%--            <input type="submit" name="delete" value="删除该用户"--%>
+    <%--                   formaction="${pageContext.request.contextPath}/basicinfo/delete"/>--%>
+    <%--    </tr>--%>
 </table>
-<input type="button" name="return" onclick="window.location.href='${pageContext.request.contextPath}/basicinfo/toBasicInfo';" value="返回">
+<input type="button" name="return"
+       onclick="window.location.href='${pageContext.request.contextPath}/basicinfo/toBasicInfo'" value="返回">
 </body>
 </html>
