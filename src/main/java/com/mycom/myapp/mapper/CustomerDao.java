@@ -8,5 +8,5 @@ public interface CustomerDao {
     Customer select(Customer customer);
     int insert(Customer customer);
     int update(Customer customer);
-    Customer delete(Customer customer);
+    int delete(Customer customer);
 }

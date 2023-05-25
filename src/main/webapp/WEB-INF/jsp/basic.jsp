@@ -11,9 +11,8 @@
     <title>基本管理功能</title>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/basicinfo/toSelect">查找客户</a>
+<a href="${pageContext.request.contextPath}/basicinfo/toSelect">查找、更新或删除客户</a>
 <a href="${pageContext.request.contextPath}/basicinfo/toInsert">新增客户</a>
-<a href="${pageContext.request.contextPath}/basicinfo/toUpdate">信息更新</a>
-<a href="${pageContext.request.contextPath}/basicinfo/toDelete">删除信息</a>
+
 </body>
 </html>

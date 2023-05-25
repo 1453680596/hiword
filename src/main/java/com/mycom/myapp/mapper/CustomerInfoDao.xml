@@ -45,6 +45,6 @@
     </update>
 
     <delete id="delete" parameterType="com.mycom.myapp.pojo.Customer">
-        delete * from costumer where id=#{id} and name=#{name};
+        delete  from customer where id=#{id};
     </delete>
 </mapper>

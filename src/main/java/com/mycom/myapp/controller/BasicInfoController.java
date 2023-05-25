@@ -50,8 +50,8 @@ public class BasicInfoController {
     }
 
     //更新用户
-    @RequestMapping("/toUpdate")
-    public String toUpdate(){return "update";}
+//    @RequestMapping("/toUpdate")
+//    public String toUpdate(){return "update";}
     @RequestMapping("/update")
     public String update(Customer customer,Model model){
         Boolean isOK2 = customerService.update(customer);
@@ -59,21 +59,21 @@ public class BasicInfoController {
             model.addAttribute("customer",customer);
             return "updateconsequence";
         }else {
-            return "update";
+            return "selectconsequence";
         }
     }
 
     //删除用户
-    @RequestMapping("/toDelete")
-    public String toDelete(){return "delete";}
+//    @RequestMapping("/toDelete")
+//    public String toDelete(){return "delete";}
     @RequestMapping("/delete")
     public String delete(Customer customer,Model model){
-        Customer customer2=customerService.delete(customer);
-        if (customer2!=null){
+        boolean customer2=customerService.delete(customer);
+        if (customer2){
             model.addAttribute("customer2",customer2);
             return "deleteconsequence";
         }else {
-            return "delete";
+            return "selectconsequence";
         }
     }
 }

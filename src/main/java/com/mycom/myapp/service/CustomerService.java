@@ -7,5 +7,5 @@ public interface CustomerService {
     Customer select(Customer customer);
     boolean insert(Customer customer);
     boolean update(Customer customer);
-    Customer delete(Customer customer);
+    boolean delete(Customer customer);
 }

@@ -12,6 +12,6 @@
 </head>
 <body>
 <h2>添加成功！</h2>
-<a href="">返回</a>
+<input type="button" name="return" onclick="window.location.href='${pageContext.request.contextPath}/basicinfo/toBasicInfo';" value="返回">
 </body>
 </html>

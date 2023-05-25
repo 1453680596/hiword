@@ -12,5 +12,6 @@
 </head>
 <body>
 <h2>信息已成功更新！</h2>
+<input type="button" name="return" onclick="window.location.href='${pageContext.request.contextPath}/basicinfo/toBasicInfo';" value="返回">
 </body>
 </html>

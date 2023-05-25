@@ -30,8 +30,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer delete(Customer customer){
-        return customerDao.delete(customer);
+    public boolean delete(Customer customer){
+        int i = customerDao.delete(customer);
+        return i>0;
     }
 
 }
