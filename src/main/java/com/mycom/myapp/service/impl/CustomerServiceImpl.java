@@ -38,8 +38,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> select(){
-        return customerDao.select();
+    public List<Customer> select(Customer customer){
+        return customerDao.select(customer);
     }
 
 

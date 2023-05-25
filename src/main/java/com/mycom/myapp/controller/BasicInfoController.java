@@ -40,8 +40,8 @@ public class BasicInfoController {
     }
     @RequestMapping("/select")
     public String customerList(Customer customer,Model model) {
-        List<Customer> customerList = customerService.select();
-        if (customerList!=null){
+        List<Customer> customerList = customerService.select(customer);
+        if (customerList!=null && customerList.size()>0){
             model.addAttribute("customerList",customerList);
             return "selectconsequence";
         }else{

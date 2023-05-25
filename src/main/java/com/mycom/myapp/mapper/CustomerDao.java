@@ -11,5 +11,5 @@ public interface CustomerDao {
     int insert(Customer customer);
     int update(Customer customer);
     int delete(Customer customer);
-    List<Customer> select();
+    List<Customer> select(Customer customer);
 }

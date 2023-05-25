@@ -10,5 +10,5 @@ public interface CustomerService {
     boolean insert(Customer customer);
     boolean update(Customer customer);
     boolean delete(Customer customer);
-    List<Customer> select();
+    List<Customer> select(Customer customer);
 }
