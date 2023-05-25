@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/basicinfo")
 public class BasicInfoController {
@@ -21,17 +23,33 @@ public class BasicInfoController {
     }
 
     //查找
+//    @RequestMapping("/toSelect")
+//    public String toSelect(Customer customer, Model model, String name) {
+//        Customer customer1 = customerService.select(customer);
+//        if (customer1 != null) {
+//            model.addAttribute("customer1", customer1);
+//            model.addAttribute("name", name);
+//            return "selectconsequence";
+//        } else {
+//            return "select";
+//        }
+//    }
     @RequestMapping("/toSelect")
-    public String toSelect(Customer customer, Model model, String name) {
-        Customer customer1 = customerService.select(customer);
-        if (customer1 != null) {
-            model.addAttribute("customer1", customer1);
-            model.addAttribute("name", name);
+    public String toSelect(){
+        return "select";
+    }
+    @RequestMapping("/select")
+    public String customerList(Customer customer,Model model) {
+        List<Customer> customerList = customerService.select();
+        if (customerList!=null){
+            model.addAttribute("customerList",customerList);
             return "selectconsequence";
-        } else {
+        }else{
             return "select";
         }
+
     }
+
 
     //新增用户
     @RequestMapping("/toInsert")

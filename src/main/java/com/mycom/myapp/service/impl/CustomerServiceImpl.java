@@ -7,15 +7,17 @@ import com.mycom.myapp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerDao customerDao;
 
-    @Override
-    public Customer select(Customer customer) {
-        return customerDao.select(customer);
-    }
+//    @Override
+//    public Customer select(Customer customer) {
+//        return customerDao.select(customer);
+//    }
 
     @Override
     public boolean insert(Customer customer) {
@@ -34,5 +36,11 @@ public class CustomerServiceImpl implements CustomerService {
         int i = customerDao.delete(customer);
         return i>0;
     }
+
+    @Override
+    public List<Customer> select(){
+        return customerDao.select();
+    }
+
 
 }

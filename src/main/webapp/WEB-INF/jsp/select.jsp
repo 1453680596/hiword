@@ -11,7 +11,7 @@
     <title>查找信息</title>
 </head>
 <body>
-<form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/basicinfo/toSelect">
+<form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/basicinfo/select">
     <table width="500" height="95" border="0" cellpadding="0" cellspacing="1" style="background-color: #3A8ECD; color: #000;"><tr>
         <tr>
             <td width="150" height="30" align="right" valign="middle" bgcolor="#FFFFFF">客户姓名：</td>
