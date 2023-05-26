@@ -12,5 +12,6 @@
 </head>
 <body>
 <h2>车辆信息添加成功！</h2>
+<input type="button" name="return" onclick="window.location.href='${pageContext.request.contextPath}/consumptioninfo/toSelect';" value="返回">
 </body>
 </html>

@@ -18,7 +18,25 @@
     <title>查询结果</title>
 </head>
 <body>
-<h2>查询成功！</h2>
+< 点击查找可查看所有车辆类型 >
+
+<form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/consumptioninfo/select">
+    <table width="500" height="95" border="0" cellpadding="0" cellspacing="1" style="background-color: #3A8ECD; color: #000;"><tr>
+        <tr>
+            <td width="150" height="30" align="right" valign="middle" bgcolor="#FFFFFF">按车辆类型分类：</td>
+            <td width="250" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
+                <input name="cartype" type="text" size="10" /></td>
+        </tr>
+
+        <tr>
+            <td height="30" colspan="3" align="center" valign="middle" bgcolor="#FFFFFF">
+                <input type="submit" name="button" id="button" value="查找" />&nbsp;&nbsp;
+                <input type="reset" name="button2" id="button2" value="重置" />
+            </td>
+        </tr>
+    </table>
+    <label style="color: red">${errormsg}</label>
+</form>
 
 <table border="1" collspacing="0" collpadding="0" align="center">
     <tr>

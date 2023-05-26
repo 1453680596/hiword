@@ -16,34 +16,40 @@ public class ConsumptionInfoController {
     private CustomerCarService customerCarService;
 
     @RequestMapping("/toConsumptionInfo")
-    public String toConsumptionInfo(){
+    public String toConsumptionInfo() {
         return "consumption";
     }
 
     @RequestMapping("/toSelect")
-    public String toSelect(){
-        return "carselect";
+    public String toSelect(CustomerCar customerCar, Model model) {
+        List<CustomerCar> customerCarList = customerCarService.select(customerCar);
+        if (customerCarList != null && customerCarList.size() > 0) {
+            model.addAttribute("customerCarList", customerCarList);
+        }
+        return "carselectconsequence";
     }
+
     @RequestMapping("/select")
     public String customerCarList(CustomerCar customerCar, Model model) {
         List<CustomerCar> customerCarList = customerCarService.select(customerCar);
-        if (customerCarList!=null && customerCarList.size()>0){
-            model.addAttribute("customerCarList",customerCarList);
+        if (customerCarList != null && customerCarList.size() > 0) {
+            model.addAttribute("customerCarList", customerCarList);
             return "carselectconsequence";
-        }else{
-            model.addAttribute("errormsg","该车辆类型不存在");
-            return "carselect";
+        } else {
+            model.addAttribute("errormsg", "该车辆类型不存在");
+            return "carselectconsequence";
         }
 
     }
 
     //新增用户
     @RequestMapping("/toInsert")
-    public String toInsert(){
+    public String toInsert() {
         return "carinsert";
     }
+
     @RequestMapping("/insert")
-    public String insert(CustomerCar customerCar,Model model){
+    public String insert(CustomerCar customerCar, Model model) {
         Boolean isOK1 = customerCarService.insert(customerCar);
         if (isOK1) {
             model.addAttribute("customerCar", customerCar);
@@ -55,17 +61,18 @@ public class ConsumptionInfoController {
 
     //更新用户
     @RequestMapping("/toUpdate")
-    public String toUpdate(CustomerCar customerCar,Model model){
-        model.addAttribute("customerCar",customerCar);
+    public String toUpdate(CustomerCar customerCar, Model model) {
+        model.addAttribute("customerCar", customerCar);
         return "carupdate";
     }
+
     @RequestMapping("/update")
-    public String update(CustomerCar customerCar,Model model){
+    public String update(CustomerCar customerCar, Model model) {
         Boolean isOK2 = customerCarService.update(customerCar);
-        if (isOK2){
-            model.addAttribute("customerCar",customerCar);
+        if (isOK2) {
+            model.addAttribute("customerCar", customerCar);
             return "carupdateconsequence";
-        }else {
+        } else {
             return "carselectconsequence";
         }
     }
@@ -74,12 +81,12 @@ public class ConsumptionInfoController {
 //    @RequestMapping("/toDelete")
 //    public String toDelete(){return "delete";}
     @RequestMapping("/delete")
-    public String delete(CustomerCar customerCar,Model model){
-        boolean customerCar2=customerCarService.delete(customerCar);
-        if (customerCar2){
-            model.addAttribute("customerCar2",customerCar2);
+    public String delete(CustomerCar customerCar, Model model) {
+        boolean customerCar2 = customerCarService.delete(customerCar);
+        if (customerCar2) {
+            model.addAttribute("customerCar2", customerCar2);
             return "cardeleteconsequence";
-        }else {
+        } else {
             return "carselectconsequence";
         }
     }

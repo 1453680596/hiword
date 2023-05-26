@@ -29,7 +29,7 @@
                 <input type="reset" name="button2" id="button2" value="重置" /></td>
         </tr>
     </table>
-    <input type="button" name="select" onclick="window.location.href='${pageContext.request.contextPath}/consumptionInfo/toSelect';" value="直接进行查询">
+    <input type="button" name="select" onclick="window.location.href='${pageContext.request.contextPath}/consumptioninfo/toSelect';" value="直接进行查询">
 </form>
 </body>
 </html>
