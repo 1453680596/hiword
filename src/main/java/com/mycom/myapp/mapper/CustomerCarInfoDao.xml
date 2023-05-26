@@ -40,6 +40,6 @@
     </update>
 
     <delete id="delete" parameterType="com.mycom.myapp.pojo.CustomerCar">
-        delete  from customer_car where id=#{id};
+        delete  from customer_car where id=#{id} and cartype=#{cartype};
     </delete>
 </mapper>

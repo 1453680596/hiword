@@ -58,7 +58,7 @@
                                '${pageContext.request.contextPath}/consumptioninfo/toUpdate?name=${customer.name}&cartype=${customerCar.cartype}'"
                        value="修改">
                 <input type="button" name="return"
-                       onclick="window.location.href='${pageContext.request.contextPath}/consumptioninfo/delete?cartype=${customerCar.cartype}'"
+                       onclick="window.location.href='${pageContext.request.contextPath}/consumptioninfo/delete?cartype=${customerCar.cartype}&customerId=${customerCar.customerId}'"
                        value="删除">
             </td>
         </tr>
