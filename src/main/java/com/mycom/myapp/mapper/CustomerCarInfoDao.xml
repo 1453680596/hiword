@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao.CustomerCarDao对应Dao接口 -->
+<mapper namespace="com.mycom.myapp.mapper.CustomerDao">
+    <resultMap id="customercarMap" type="com.mycom.myapp.pojo.CustomerCar">
+        <id column="id" property="id"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="cartype" property="cartype"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <select id="select" parameterType="com.mycom.myapp.pojo.CustomerCar" resultMap="customercarMap">
+        select a.name,b.cartype from customer a,customer_car b where a.id = b.customer_id;
+    </select>
+
+    <insert id="insert" parameterType="com.mycom.myapp.pojo.CustomerCar" >
+        insert into customer_car(customer_id,cartype) values (#{customerId},#{cartype})
+    </insert>
+
+    <update id="update" parameterType="com.mycom.myapp.pojo.CustomerCar">
+        update customer
+        <set>
+            <if test="customerId!=null and customerId!=''">
+                customer_id=#{customerId},
+            </if>
+            <if test="cartype!=null and cartype!=''">
+                cartype=#{cartype},
+            </if>
+        </set>
+        where id=#{id};
+    </update>
+
+    <delete id="delete" parameterType="com.mycom.myapp.pojo.CustomerCar">
+        delete  from customer_car where id=#{id};
+    </delete>
+</mapper>

@@ -29,6 +29,7 @@
                 <input type="reset" name="button2" id="button2" value="重置" /></td>
         </tr>
     </table>
+    <label style="color: red">${errormsg}</label>
 </form>
 </body>
 </html>

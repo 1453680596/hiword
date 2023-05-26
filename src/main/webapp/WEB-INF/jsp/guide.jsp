@@ -15,6 +15,7 @@
 <p>欢迎您：${username}！</p>
 <a href="${pageContext.request.contextPath}/basicinfo/toBasicInfo">进入基本信息管理</a><br/>
 <br/>
+<a href="${pageContext.request.contextPath}/consumptioninfo/toConsumptionInfo">客户消费信息管理</a><br/>
 <input type="button" name="logout" onclick="window.location.href='${pageContext.request.contextPath}/index/toIndex';" value="登出">
 
 

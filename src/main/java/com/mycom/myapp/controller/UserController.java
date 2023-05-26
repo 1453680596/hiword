@@ -36,6 +36,7 @@ public class UserController {
             return "guide";
         }
         else {
+            model.addAttribute("errormsg","账号密码错误或不存在该用户");
             return "login";
         }
         }
