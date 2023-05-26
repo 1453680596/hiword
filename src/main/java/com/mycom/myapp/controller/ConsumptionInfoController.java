@@ -71,8 +71,10 @@ public class ConsumptionInfoController {
         Boolean isOK2 = customerCarService.update(customerCar);
         if (isOK2) {
             model.addAttribute("customerCar", customerCar);
-            return "carupdateconsequence";
+            model.addAttribute("errormsg", "更新成功！");
+            return "carselectconsequence";
         } else {
+            model.addAttribute("errormsg", "更新失败！");
             return "carselectconsequence";
         }
     }
@@ -85,8 +87,10 @@ public class ConsumptionInfoController {
         boolean customerCar2 = customerCarService.delete(customerCar);
         if (customerCar2) {
             model.addAttribute("customerCar2", customerCar2);
-            return "cardeleteconsequence";
+            model.addAttribute("errormsg", "删除成功！");
+            return "carselectconsequence";
         } else {
+            model.addAttribute("errormsg", "删除失败！！");
             return "carselectconsequence";
         }
     }

@@ -35,7 +35,7 @@
             </td>
         </tr>
     </table>
-    <label style="color: red">${errormsg}</label>
+    <p style="color:red">${errormsg}</p >
 </form>
 
 <table border="1" collspacing="0" collpadding="0" align="center">
@@ -55,10 +55,10 @@
             <td>
                 <input type="button" name="return"
                        onclick="window.location.href=
-                               '${pageContext.request.contextPath}/consumptioninfo/toUpdate?name=${customer.name}&cartype=${customerCar.cartype}'"
+                               '${pageContext.request.contextPath}/consumptioninfo/toUpdate?id=${customerCar.id}&cartype=${customerCar.cartype}'"
                        value="修改">
-                <input type="button" name="return"
-                       onclick="window.location.href='${pageContext.request.contextPath}/consumptioninfo/delete?cartype=${customerCar.cartype}&customerId=${customerCar.customerId}'"
+                <input type="button" name="return" formmethod="get"
+                       onclick="window.location.href='${pageContext.request.contextPath}/consumptioninfo/delete?id=${customerCar.id}'"
                        value="删除">
             </td>
         </tr>
@@ -66,6 +66,7 @@
 
 
 </table>
+<label style="color: red">${error}</label>
 <input type="button" name="return"
        onclick="window.location.href='${pageContext.request.contextPath}/consumptioninfo/toConsumptionInfo'" value="返回">
 </body>
