@@ -13,6 +13,10 @@
 </head>
 <body>
 <p>欢迎您：${username}！</p>
-<a href="${pageContext.request.contextPath}/basicinfo/toBasicInfo">进入基本信息管理</a>
+<a href="${pageContext.request.contextPath}/basicinfo/toBasicInfo">进入基本信息管理</a><br/>
+<br/>
+<input type="button" name="logout" onclick="window.location.href='${pageContext.request.contextPath}/index/toIndex';" value="登出">
+
+
 </body>
 </html>

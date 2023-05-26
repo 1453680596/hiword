@@ -20,10 +20,14 @@
         </tr>
 
         <tr>
-            <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="submit" name="button" id="button" value="查找" />&nbsp;&nbsp;
-                <input type="reset" name="button2" id="button2" value="重置" /></td>
+            <td height="30" colspan="3" align="center" valign="middle" bgcolor="#FFFFFF">
+                <input type="submit" name="button" id="button" value="查找" />&nbsp;&nbsp;
+                <input type="reset" name="button2" id="button2" value="重置" />
+            </td>
         </tr>
     </table>
+    <label style="color: red">${errormsg}</label>
 </form>
 </body>
 </html>
+

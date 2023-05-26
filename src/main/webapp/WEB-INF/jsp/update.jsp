@@ -23,26 +23,27 @@
         <tr>
             <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">性别：</td>
             <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
-                <input name="sex" type="text" size="10"/></td>
+                <input name="sex" type="text" size="10" value="${customer.sex}"/></td>
         </tr>
         <tr>
             <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">电话：</td>
             <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
-                <input name="phone" type="text" size="10" /></td>
+                <input name="phone" type="text" size="10" value="${customer.phone}" /></td>
         </tr>
         <tr>
             <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">客户等级：</td>
             <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
-                <input name="grade" type="text" size="10"  /></td>
+                <input name="grade" type="text" size="10" value="${customer.grade}" /></td>
         </tr>
         <tr>
             <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">电子邮箱：</td>
             <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
-                <input name="email" type="text" size="10" /></td>
+                <input name="email" type="text" size="10" value="${customer.email}" /></td>
         </tr>
         <tr>
-            <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="submit" name="update" value="更新" formaction="${pageContext.request.contextPath}/basicinfo/update"/>&nbsp;&nbsp;
-                <input type="submit" name="delete" value="删除该用户" formaction="${pageContext.request.contextPath}/basicinfo/delete"/>
+            <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
+                <input type="submit" name="update" value="更新" formaction="${pageContext.request.contextPath}/basicinfo/update"/>&nbsp;&nbsp;
+                <input type="submit" name="delete" value="返回" formaction="${pageContext.request.contextPath}/basicinfo/select"/>
         </tr>
     </table>
 </form>

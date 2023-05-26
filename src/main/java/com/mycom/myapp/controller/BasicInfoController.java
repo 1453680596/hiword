@@ -45,6 +45,7 @@ public class BasicInfoController {
             model.addAttribute("customerList",customerList);
             return "selectconsequence";
         }else{
+            model.addAttribute("errormsg","用户不存在");
             return "select";
         }
 
@@ -69,7 +70,10 @@ public class BasicInfoController {
 
     //更新用户
     @RequestMapping("/toUpdate")
-    public String toUpdate(){return "update";}
+    public String toUpdate(Customer customer,Model model){
+        model.addAttribute("customer",customer);
+        return "update";
+    }
     @RequestMapping("/update")
     public String update(Customer customer,Model model){
         Boolean isOK2 = customerService.update(customer);
