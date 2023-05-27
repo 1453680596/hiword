@@ -73,8 +73,32 @@ public class BasicInfoController {
     }
 
     @RequestMapping("/delete")
-    public String delete(Customer customer,Model model){
+    public String delete(Customer customer,Model model,int id){
+        if (!StringUtils.isEmpty(id)){
+            try{
+                customerService.delete(customer);
+            }catch (Exception e){
+                model.addAttribute("errormsg","不可删除仍有车辆信息的客户，请核实");
+                return toSelect(model);
+            }
+        }
         boolean customer2=customerService.delete(customer);
+        return toSelect(model);
+    }
+
+    @RequestMapping("/deleteCustomerInfoBatch")
+    public String deleteCustomerInfoBatch(Model model, String... ids) {
+        if (!StringUtils.isEmpty(ids)){
+            try{
+                customerService.deleteCustomerInfoBatch(ids);
+            }catch (Exception e){
+                model.addAttribute("errormsg","不可删除仍有车辆信息的客户，请核实");
+                return toSelect(model);
+            }
+        }
+        if (!StringUtils.isEmpty(ids)){
+            customerService.deleteCustomerInfoBatch(ids);
+        }
         return toSelect(model);
     }
 }

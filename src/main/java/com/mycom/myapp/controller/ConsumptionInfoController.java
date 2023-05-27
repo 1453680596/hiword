@@ -104,4 +104,6 @@ public class ConsumptionInfoController {
         return toSelect(model);
 
     }
+
+
 }

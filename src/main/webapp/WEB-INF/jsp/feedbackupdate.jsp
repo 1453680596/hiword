@@ -20,14 +20,14 @@
                 <input name="name" type="text" size="10" value="${feedback.name}"/></td>
         </tr>
         <tr>
-            <td width="500" height="300" align="right" valign="middle" bgcolor="#FFFFFF">反馈信息：</td>
-            <td width="600" height="200" align="left" valign="middle" bgcolor="#FFFFFF">
-                <input name="message" type="text" size="300" value="${feedback.message}"/></td>
+            <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">反馈信息：</td>
+            <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
+                <input name="message" type="text" size="150" width="100" height="100" value="${feedback.message}"/></td>
         </tr>
         <tr>
             <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">回复：</td>
             <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
-                <input name="reply" type="text" size="10" value="${feedback.reply}"/></td>
+                <input name="reply" type="text" size="150" width="200" height="200" value="${feedback.reply}"/></td>
         </tr>
 
         <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">

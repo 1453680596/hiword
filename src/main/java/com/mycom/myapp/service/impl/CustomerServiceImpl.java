@@ -42,5 +42,8 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDao.select(customer);
     }
 
-
+    @Override
+    public int deleteCustomerInfoBatch(String... ids) {
+        return customerDao.deleteCustomerInfoBatch(ids);
+    }
 }

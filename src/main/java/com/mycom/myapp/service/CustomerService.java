@@ -11,4 +11,5 @@ public interface CustomerService {
     boolean update(Customer customer);
     boolean delete(Customer customer);
     List<Customer> select(Customer customer);
+    int deleteCustomerInfoBatch(String...ids);
 }

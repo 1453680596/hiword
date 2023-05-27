@@ -39,7 +39,7 @@
         }
 
         .top {
-            height: 35%;
+            height: 25%;
             background-color: #f2f2f2;
         }
 
@@ -82,6 +82,7 @@
         </tr>
     </table>
 </div>
+<p style="color: red">${errormsg}</p>
 <div class="bottom">
     <button onclick="location.href='${pageContext.request.contextPath}/basicinfo/toInsert'">新增客户</button>
     <table>
