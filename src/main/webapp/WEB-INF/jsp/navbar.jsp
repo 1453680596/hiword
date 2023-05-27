@@ -19,7 +19,7 @@
                 <a class="nav-link"  type="button" onclick="location.href='${pageContext.request.contextPath}/consumptioninfo/toSelect'">客户车辆管理</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link"  type="button" onclick="location.href='${pageContext.request.contextPath}/customerConsumption/toCustomerConsumption'">客户消费信息</a>
+                <a class="nav-link"  type="button" onclick="location.href='${pageContext.request.contextPath}/feedback/toSelect'">客户留言反馈管理</a>
             </li>
             <li class="nav-item" style="position: absolute;right: 20px">
                 <a class="nav-link"   type="button" onclick="location.href='${pageContext.request.contextPath}/index/toLogin'">登出</a>

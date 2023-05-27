@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao.FeedbackDao对应Dao接口 -->
+<mapper namespace="com.mycom.myapp.mapper.FeedbackDao">
+    <resultMap id="feedbackMap" type="com.mycom.myapp.pojo.Feedback">
+        <id column="id" property="id"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="message" property="message"/>
+        <result column="reply" property="reply"/>
+    </resultMap>
+
+    <select id="select" parameterType="com.mycom.myapp.pojo.Feedback" resultMap="feedbackMap">
+        select a.name,b.* from customer a,feedback b where a.id = b.customer_id
+        <if test="name!=null and name!=''">
+            and a.name=#{name}
+        </if>
+        <if test="message!=null and message!=''">
+            and b.message=#{message}
+        </if>
+        <if test="id!=null and id!=''">
+            and b.id=#{id}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.mycom.myapp.pojo.Feedback" >
+        insert into feedback(customer_id,message,reply) values (#{customerId},#{message},#{message},#{reply})
+    </insert>
+
+    <update id="update" parameterType="com.mycom.myapp.pojo.Feedback">
+        update feedback set reply=#{reply} where id=#{id};
+    </update>
+
+    <delete id="delete" parameterType="com.mycom.myapp.pojo.Feedback">
+        delete  from feedback where id=#{id};
+    </delete>
+</mapper>

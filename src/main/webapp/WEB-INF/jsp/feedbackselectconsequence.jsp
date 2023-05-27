@@ -1,12 +1,18 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Lenovo
+  Date: 2023/5/27
+  Time: 14:26
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.mycom.myapp.pojo.CustomerCar" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>客户车辆管理</title>
+    <title>客户反馈信息管理</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
     <style type="text/css">
@@ -68,13 +74,11 @@
 <div class="top">
     <table>
         <tr>
-            <form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/consumptioninfo/select">
-                <h1 style="text-align: center">客户-车辆信息</h1>
+            <form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/feedback/select">
+                <h1 style="text-align: center">客户反馈</h1>
                 <table class="search-table">
                     <label for="name">客户姓名:</label>
                     <input type="text" id="name" name="name" value="${name}">
-                    <label for="cartype">车辆类型:</label>
-                    <input type="text" id="cartype" name="cartype" value="${cartype}">
                 </table>
                 <table>
                     <input class="button" type="submit" value="搜索">
@@ -86,35 +90,38 @@
     </table>
 </div>
 <div class="bottom">
-    <button onclick="location.href='${pageContext.request.contextPath}/consumptioninfo/toInsert'">新增客户车辆信息</button>
     <table>
         <thead>
         <tr>
             <th><input type="checkbox" id="selectAll"></th>
             <th>客户姓名</th>
-            <th>车辆类型</th>
+            <th>留言信息</th>
+            <th>回复</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${customerCarList}" var="customerCar">
+        <c:forEach items="${feedbackList}" var="feedback">
             <tr>
                 <td colspan="1">
-                    <input type="checkbox" name="selectedIds" class="rowCheckbox" data-id="${customerCar.id}">
+                    <input type="checkbox" name="selectedIds" class="rowCheckbox" data-id="${feedback.id}">
                 </td>
                 <td>
-                    <span class="text-field" name="name" value="${customerCar.name}">${customerCar.name}</span>
+                    <span class="text-field" name="name" value="${feedback.name}">${feedback.name}</span>
                 </td>
                 <td>
-                    <span class="text-field" name="sex" value="${customerCar.cartype}">${customerCar.cartype}</span>
+                    <span class="text-field" name="message" value="${feedback.message}">${feedback.message}</span>
+                </td>
+                <td>
+                    <span class="text-field" name="reply" value="${feedback.reply}">${feedback.reply}</span>
                 </td>
                 <td colspan="2">
                     <form action="toUpdate" method="post" style="display: inline-block">
-                        <input type="hidden" name="id" value="${customerCar.id}">
-                        <input type="submit" value="更新" style="display: inline-block">
+                        <input type="hidden" name="id" value="${feedback.id}">
+                        <input type="submit" value="回复" style="display: inline-block">
                     </form>
                     <form action="delete" method="post" style="display: inline-block">
-                        <input type="hidden" name="id" value="${customerCar.id}">
+                        <input type="hidden" name="id" value="${feedback.id}">
                         <input type="submit" value="删除">
                     </form>
                 </td>
@@ -123,7 +130,5 @@
         </tbody>
     </table>
 </div>
-
-
 </body>
 </html>
