@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean register(User user) {
         int i = userDao.register(user);
-        return i > 0;
+        return i>0;
     }
 
     @Override

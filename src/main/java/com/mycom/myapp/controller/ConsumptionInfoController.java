@@ -1,10 +1,13 @@
 package com.mycom.myapp.controller;
 
+import com.mycom.myapp.pojo.Customer;
 import com.mycom.myapp.pojo.CustomerCar;
 import com.mycom.myapp.service.CustomerCarService;
+import com.mycom.myapp.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -14,18 +17,13 @@ import java.util.List;
 public class ConsumptionInfoController {
     @Autowired
     private CustomerCarService customerCarService;
-
-    @RequestMapping("/toConsumptionInfo")
-    public String toConsumptionInfo() {
-        return "consumption";
-    }
+    @Autowired
+    private CustomerService customerService;
 
     @RequestMapping("/toSelect")
-    public String toSelect(CustomerCar customerCar, Model model) {
-        List<CustomerCar> customerCarList = customerCarService.select(customerCar);
-        if (customerCarList != null && customerCarList.size() > 0) {
-            model.addAttribute("customerCarList", customerCarList);
-        }
+    public String toSelect( Model model) {
+        List<CustomerCar> customerCarList = customerCarService.select(new CustomerCar());
+        model.addAttribute("customerCarList", customerCarList);
         return "carselectconsequence";
     }
 
@@ -50,11 +48,23 @@ public class ConsumptionInfoController {
 
     @RequestMapping("/insert")
     public String insert(CustomerCar customerCar, Model model) {
+        if (StringUtils.isEmpty(customerCar.getName())||StringUtils.isEmpty(customerCar.getCartype())){
+            model.addAttribute("errormsg","客户姓名或车型不可为空");
+            return "carinsert";
+        }
+
+        List<Customer> list = customerService.select(new Customer(customerCar.getName()));
+        if (list.size()==0){
+            model.addAttribute("errormsg","客户不存在，请核实客户信息");
+            return "carinsert";
+        }
+        customerCar.setCustomerId(list.get(0).getId());
         Boolean isOK1 = customerCarService.insert(customerCar);
         if (isOK1) {
-            model.addAttribute("customerCar", customerCar);
-            return "carinsertconsequence";
+            model.addAttribute("errormsg","新增成功");
+            return toSelect(model);
         } else {
+            model.addAttribute("errormsg","新增失败");
             return "carinsert";
         }
     }
@@ -62,7 +72,8 @@ public class ConsumptionInfoController {
     //更新用户
     @RequestMapping("/toUpdate")
     public String toUpdate(CustomerCar customerCar, Model model) {
-        model.addAttribute("customerCar", customerCar);
+        List<CustomerCar> cars = customerCarService.select(customerCar);
+        model.addAttribute("customerCar", cars.get(0));
         return "carupdate";
     }
 
@@ -70,12 +81,12 @@ public class ConsumptionInfoController {
     public String update(CustomerCar customerCar, Model model) {
         Boolean isOK2 = customerCarService.update(customerCar);
         if (isOK2) {
-            model.addAttribute("customerCar", customerCar);
             model.addAttribute("errormsg", "更新成功！");
-            return "carselectconsequence";
+            return toSelect(model);
         } else {
+            model.addAttribute("customerCar", customerCar);
             model.addAttribute("errormsg", "更新失败！");
-            return "carselectconsequence";
+            return "carupdate";
         }
     }
 
@@ -86,12 +97,11 @@ public class ConsumptionInfoController {
     public String delete(CustomerCar customerCar, Model model) {
         boolean customerCar2 = customerCarService.delete(customerCar);
         if (customerCar2) {
-            model.addAttribute("customerCar2", customerCar2);
             model.addAttribute("errormsg", "删除成功！");
-            return "carselectconsequence";
         } else {
             model.addAttribute("errormsg", "删除失败！！");
-            return "carselectconsequence";
         }
+        return toSelect(model);
+
     }
 }

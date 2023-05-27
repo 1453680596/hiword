@@ -15,7 +15,13 @@
     </resultMap>
 
     <select id="select" parameterType="com.mycom.myapp.pojo.Customer" resultMap="customerMap">
-        select * from customer where name=#{name}
+        select * from customer where 1=1
+        <if test="name !=null and name !=''">
+          and  name=#{name}
+        </if>
+        <if test="id !=null and id !=''">
+            and  id=#{id}
+        </if>
     </select>
 
     <insert id="insert" parameterType="com.mycom.myapp.pojo.Customer" >

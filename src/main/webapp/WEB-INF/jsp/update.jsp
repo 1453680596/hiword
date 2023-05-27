@@ -43,7 +43,7 @@
         <tr>
             <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
                 <input type="submit" name="update" value="更新" formaction="${pageContext.request.contextPath}/basicinfo/update"/>&nbsp;&nbsp;
-                <input type="submit" name="delete" value="返回" formaction="${pageContext.request.contextPath}/basicinfo/select"/>
+                <input type="submit" name="delete" value="返回" formaction="${pageContext.request.contextPath}/basicinfo/toSelect"/>
         </tr>
     </table>
 </form>

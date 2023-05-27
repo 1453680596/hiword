@@ -39,10 +39,13 @@
                 <input name="email" type="text" size="10" /></td>
         </tr>
         <tr>
-            <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="submit" name="button" id="button" value="添加" />&nbsp;&nbsp;
-                <input type="reset" name="button2" id="button2" value="重置" /></td>
+            <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
+                <input type="submit" name="button" id="button" value="添加" />&nbsp;&nbsp;
+                <input type="submit" name="delete" value="返回" formaction="${pageContext.request.contextPath}/basicinfo/toSelect"/>
+            </td>
         </tr>
     </table>
+    <p style="color: red">${errormsg}</p>
 </form>
 </body>
 </html>

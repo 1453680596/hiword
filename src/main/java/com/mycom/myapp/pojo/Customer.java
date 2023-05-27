@@ -8,6 +8,12 @@ public class Customer {
     private String grade;
     private String email;
 
+    public Customer(){
+
+    }
+    public Customer(String name){
+        this.name = name;
+    }
     public int getId() {
         return id;
     }

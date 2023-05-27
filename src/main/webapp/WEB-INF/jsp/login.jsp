@@ -1,35 +1,47 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lenovo
-  Date: 2023/5/24
-  Time: 14:17
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>登录</title>
+    <meta charset="UTF-8">
+    <title>客户管理系统</title>
+    <style>
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.8rem;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+    </style>
 </head>
 <body>
-请输入已注册的账号密码：
-<form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/user/login">
-    <table width="500" height="95" border="0" cellpadding="0" cellspacing="1" style="background-color: #3A8ECD; color: #000;"><tr>
-        <tr>
-            <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">账号：</td>
-            <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
-                <input name="username" type="text" size="10" /></td>
-        </tr>
-        <tr>
-            <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">密码：</td>
-            <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
-                <input name="password" type="text" size="10" /></td>
-        </tr>
-        <tr>
-            <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="submit" name="button" id="button" value="登录" />&nbsp;&nbsp;
-                <input type="reset" name="button2" id="button2" value="重置" /></td>
-        </tr>
-    </table>
-    <label style="color: red">${errormsg}</label>
+<form method="post" action="${pageContext.request.contextPath}/user/login">
+    <h1>客户管理系统</h1>
+    <div class="form-group">
+        <label for="username">账号:</label>
+        <input type="text" id="username" name="username" value="${user.username}">
+    </div>
+    <div class="form-group">
+        <label for="password">密码:</label>
+        <input type="password" id="password" name="password">
+    </div>
+    <div class="form-group">
+        <button type="submit" style="margin-right: 10px">登录</button>
+        <button type="button" style="margin-left: 110px" onclick="location.href='${pageContext.request.contextPath}/index/toRegister'">注册
+        </button>
+    </div>
+    <c:if test="${not empty errormsg}">
+        <div class="error-message">${errormsg}</div>
+    </c:if>
 </form>
 </body>
 </html>

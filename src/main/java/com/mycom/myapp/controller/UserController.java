@@ -5,8 +5,8 @@ import com.mycom.myapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import sun.security.util.Password;
 
 @Controller
 @RequestMapping("/user")
@@ -17,11 +17,19 @@ public class UserController {
 
     @RequestMapping("/register")
     public String register(User user, Model model) {
+        if (StringUtils.isEmpty(user.getUsername())||StringUtils.isEmpty(user.getPassword())){
+            model.addAttribute("errorMessage","注册信息不能为空！");
+            return "register";
+        }
         boolean isOK = userService.register(user);
         if (isOK) {
             model.addAttribute("user", user);
-            return "success";
-        } else {
+            model.addAttribute("errorMessage", "注册成功");
+            return "login";
+        }
+
+        else {
+            model.addAttribute("errorMessage", "注册失败");
             return "register";
         }
     }

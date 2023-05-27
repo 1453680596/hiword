@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>注册</title>
 </head>
 <body>
 <center>
@@ -25,10 +25,12 @@
                     <input name="password" type="text" size="10" /></td>
             </tr>
             <tr>
-                <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF"><input type="submit" name="button" id="button" value="注册" />&nbsp;&nbsp;
+                <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
+                    <input type="submit" name="button" id="button" value="注册" />&nbsp;&nbsp;
                     <input type="reset" name="button2" id="button2" value="重置" /></td>
             </tr>
         </table>
+        <label style="color: red">${errorMessage}</label>
     </form>
 </center>
 

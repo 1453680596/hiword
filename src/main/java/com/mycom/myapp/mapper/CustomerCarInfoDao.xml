@@ -20,6 +20,9 @@
         <if test="cartype!=null and cartype!=''">
             and b.cartype=#{cartype}
         </if>
+        <if test="id!=null and id!=''">
+            and b.id=#{id}
+        </if>
     </select>
 
     <insert id="insert" parameterType="com.mycom.myapp.pojo.CustomerCar" >
