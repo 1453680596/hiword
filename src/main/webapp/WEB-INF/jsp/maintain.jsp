@@ -6,7 +6,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>客户车辆管理</title>
+    <title>维护功能管理</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Insert title here</title>
     <style type="text/css">
@@ -68,14 +68,12 @@
 <div class="top">
     <table>
         <tr>
-            <form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/consumptioninfo/select">
-                <h1 style="text-align: center">客户-车辆信息</h1>
+            <form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/maintain/select">
+                <h1 style="text-align: center">车辆维护</h1>
                 <table class="search-table">
                     <label for="name">客户姓名:</label>
                     <input type="text" id="name" name="name" value="${name}">
-                    <label for="cartype">车辆类型:</label>
-                    <input type="text" id="cartype" name="cartype" value="${cartype}">
-                    <label for="cartype">车牌号:</label>
+                    <label for="carnumber">车牌号:</label>
                     <input type="text" id="carnumber" name="carnumber" value="${carnumber}">
                 </table>
                 <table>
@@ -88,39 +86,44 @@
     </table>
 </div>
 <div class="bottom">
-    <button onclick="location.href='${pageContext.request.contextPath}/consumptioninfo/toInsert'">新增客户车辆信息</button>
+    <button onclick="location.href='${pageContext.request.contextPath}/maintain/toInsert'">新增数据</button>
     <table>
         <thead>
         <tr>
             <th><input type="checkbox" id="selectAll"></th>
             <th>客户姓名</th>
-            <th>车辆类型</th>
             <th>车牌号</th>
+            <th>维护状态</th>
+            <th>维修时间</th>
             <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${customerCarList}" var="customerCar">
+        <c:forEach items="${maintainList}" var="maintain">
             <tr>
                 <td colspan="1">
-                    <input type="checkbox" name="selectedIds" class="rowCheckbox" data-id="${customerCar.id}">
+                    <input type="checkbox" name="selectedIds" class="rowCheckbox" data-id="${maintain.id}">
                 </td>
                 <td>
-                    <span class="text-field" name="name" value="${customerCar.name}">${customerCar.name}</span>
+                    <span class="text-field" name="name" value="${maintain.name}">${maintain.name}</span>
+                </td>
+
+                <td>
+                    <span class="text-field" name="carnumber" value="${maintain.carnumber}">${maintain.carnumber}</span>
                 </td>
                 <td>
-                    <span class="text-field" name="sex" value="${customerCar.cartype}">${customerCar.cartype}</span>
-                </td>
+                <span class="text-field" name="carcondition" value="${maintain.carcondition}">${maintain.carcondition}</span>
+            </td>
                 <td>
-                    <span class="text-field" name="carnumber" value="${customerCar.carnumber}">${customerCar.carnumber}</span>
+                    <span class="text-field" name="times" value="${maintain.times}">${maintain.times}</span>
                 </td>
                 <td colspan="2">
                     <form action="toUpdate" method="post" style="display: inline-block">
-                        <input type="hidden" name="id" value="${customerCar.id}">
+                        <input type="hidden" name="id" value="${maintain.id}">
                         <input type="submit" value="更新" style="display: inline-block">
                     </form>
                     <form action="delete" method="post" style="display: inline-block">
-                        <input type="hidden" name="id" value="${customerCar.id}">
+                        <input type="hidden" name="id" value="${maintain.id}">
                         <input type="submit" value="删除">
                     </form>
                 </td>

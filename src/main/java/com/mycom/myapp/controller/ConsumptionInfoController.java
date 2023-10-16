@@ -102,8 +102,5 @@ public class ConsumptionInfoController {
             model.addAttribute("errormsg", "删除失败！！");
         }
         return toSelect(model);
-
     }
-
-
 }

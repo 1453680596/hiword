@@ -5,6 +5,15 @@ public class CustomerCar {
     private int customerId;
     private String cartype;
     private String name;
+    private String carnumber;
+
+    public String getCarnumber() {
+        return carnumber;
+    }
+
+    public void setCarnumber(String carnumber) {
+        this.carnumber = carnumber;
+    }
 
     public String getName() {
         return name;

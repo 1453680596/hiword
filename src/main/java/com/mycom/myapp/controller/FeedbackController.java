@@ -35,36 +35,6 @@ public class FeedbackController {
         }
 
     }
-
-    //新增用户
-//    @RequestMapping("/toInsert")
-//    public String toInsert() {
-//        return "carinsert";
-//    }
-//
-//    @RequestMapping("/insert")
-//    public String insert(CustomerCar customerCar, Model model) {
-//        if (StringUtils.isEmpty(customerCar.getName())||StringUtils.isEmpty(customerCar.getCartype())){
-//            model.addAttribute("errormsg","客户姓名或车型不可为空");
-//            return "carinsert";
-//        }
-//
-//        List<Customer> list = customerService.select(new Customer(customerCar.getName()));
-//        if (list.size()==0){
-//            model.addAttribute("errormsg","客户不存在，请核实客户信息");
-//            return "carinsert";
-//        }
-//        customerCar.setCustomerId(list.get(0).getId());
-//        Boolean isOK1 = customerCarService.insert(customerCar);
-//        if (isOK1) {
-//            model.addAttribute("errormsg","新增成功");
-//            return toSelect(model);
-//        } else {
-//            model.addAttribute("errormsg","新增失败");
-//            return "carinsert";
-//        }
-//    }
-
     //更新用户
     @RequestMapping("/toUpdate")
     public String toUpdate(Feedback feedback, Model model) {

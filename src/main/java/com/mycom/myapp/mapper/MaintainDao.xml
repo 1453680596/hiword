@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- dao.FeedbackDao对应Dao接口 -->
+<mapper namespace="com.mycom.myapp.mapper.MaintainDao">
+    <resultMap id="maintainMap" type="com.mycom.myapp.pojo.Maintain">
+        <id column="id" property="id"/>
+        <result column="customer_id" property="customerId"/>
+        <result column="times" property="times"/>
+        <result column="name" property="name"/>
+        <result column="carnumber" property="carnumber"/>
+        <result column="carcondition" property="carcondition"/>
+    </resultMap>
+
+    <select id="select" parameterType="com.mycom.myapp.pojo.Maintain" resultMap="maintainMap">
+        select a.name,b.* from customer a,maintain b where a.id = b.customer_id
+        <if test="name!=null and name!=''">
+            and a.name=#{name}
+        </if>
+        <if test="carnumber!=null and carnumber!=''">
+            and b.carnumber=#{carnumber}
+        </if>
+        <if test="id!=null and id!=''">
+            and b.id=#{id}
+        </if>
+    </select>
+
+    <insert id="insert" parameterType="com.mycom.myapp.pojo.Maintain" >
+        insert into maintain(customer_id,carnumber,times,carcondition) values (#{customerId},#{carnumber},#{times},#{carcondition})
+    </insert>
+
+    <update id="update" parameterType="com.mycom.myapp.pojo.Maintain">
+        update maintain
+        <set>
+            <if test="carcondition!=null and carcondition!=''">
+                carcondition=#{carcondition},
+            </if>
+            <if test="times!=null and times!=''">
+                times=#{times},
+            </if>
+        </set>
+        where id=#{id};
+    </update>
+
+    <delete id="delete" parameterType="com.mycom.myapp.pojo.Maintain">
+        delete  from maintain where id=#{id};
+    </delete>
+</mapper>

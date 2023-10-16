@@ -24,6 +24,11 @@
             <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
                 <input name="cartype" type="text" size="10" value="${customerCar.cartype}"/></td>
         </tr>
+        <tr>
+            <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">车牌号：</td>
+            <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
+                <input name="carnumber" type="text" size="10" value="${customerCar.carnumber}"/></td>
+        </tr>
 
             <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
                 <input type="submit" name="update" value="更新" formaction="${pageContext.request.contextPath}/consumptioninfo/update"/>&nbsp;&nbsp;

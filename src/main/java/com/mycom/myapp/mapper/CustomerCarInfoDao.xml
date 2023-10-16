@@ -10,6 +10,7 @@
         <result column="customer_id" property="customerId"/>
         <result column="cartype" property="cartype"/>
         <result column="name" property="name"/>
+        <result column="carnumber" property="carnumber"/>
     </resultMap>
 
     <select id="select" parameterType="com.mycom.myapp.pojo.CustomerCar" resultMap="customercarMap">
@@ -23,16 +24,30 @@
         <if test="id!=null and id!=''">
             and b.id=#{id}
         </if>
+        <if test="carnumber!=null and carnumber!=''">
+            and b.carnumber=#{carnumber}
+        </if>
     </select>
-
     <insert id="insert" parameterType="com.mycom.myapp.pojo.CustomerCar" >
-        insert into customer_car(customer_id,cartype) values (#{customerId},#{cartype})
+        insert into customer_car(customer_id,cartype,carnumber) values (#{customerId},#{cartype},#{carnumber})
     </insert>
 
     <update id="update" parameterType="com.mycom.myapp.pojo.CustomerCar">
-        update customer_car set cartype=#{cartype} where id=#{id};
+        update customer_car
+        <set>
+            <if test="cartype!=null and cartype!=''">
+                cartype=#{cartype},
+            </if>
+            <if test="carnumber!=null and carnumber!=''">
+                carnumber=#{carnumber},
+            </if>
+        </set>
+        where id=#{id};
     </update>
-
+ <!--       update customer_car set cartype=#{cartype} where id=#{id};
+        update customer_car set carnumber=#{carnumber} where id=#{id};
+    </update>
+-->
     <delete id="delete" parameterType="com.mycom.myapp.pojo.CustomerCar">
         delete  from customer_car where id=#{id};
     </delete>

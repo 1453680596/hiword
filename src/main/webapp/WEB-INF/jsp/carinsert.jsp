@@ -24,6 +24,11 @@
                 <input name="cartype" type="text" size="10" /></td>
         </tr>
         <tr>
+            <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">车牌号：</td>
+            <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
+                <input name="carnumber" type="text" size="10" /></td>
+        </tr>
+        <tr>
             <td height="30" colspan="2" align="center" valign="middle" bgcolor="#FFFFFF">
                 <input type="submit" name="button" id="button" value="添加" />&nbsp;&nbsp;
                 <input type="submit" name="return" value="返回" formaction="${pageContext.request.contextPath}/consumptioninfo/toSelect"/>

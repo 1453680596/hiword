@@ -48,5 +48,4 @@
     </bean>
     <!-- 指定需要扫描的包（包括子包），使注解生效。dao包在mybatis-spring组件中已经扫描，这里不再需要扫描-->
     <context:component-scan base-package="com.mycom.myapp.service.impl"/>
-
 </beans>
