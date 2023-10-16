@@ -32,7 +32,6 @@ public class BasicInfoController {
             model.addAttribute("errormsg","用户不存在");
             return "selectconsequence";
         }
-
     }
 
 
