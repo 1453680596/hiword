@@ -54,13 +54,22 @@ public class MaintainController {
             model.addAttribute("errormsg","客户姓名或车牌不可为空");
             return "maintain";
         }
-
-        List<Maintain> list = maintainService.select(new Maintain());
+/*        List<Maintain> list = maintainService.select(new Maintain());
         if (list.size()==0){
             model.addAttribute("errormsg","客户不存在，请核实客户信息");
             return "maintain";
         }
-        maintain.setCustomerId(list.get(0).getId());
+
+ */
+        Customer customer=new Customer();
+        customer.setName(maintain.getName());
+        List<Customer> customerList = customerService.select(customer);
+        if (customerList!=null && customerList.size()>0){
+            model.addAttribute("errormsg","用户不存在");
+            return "maintain";
+        }
+        maintain.setCustomerId(customerList.get(0).getId());
+
         Boolean isOK1 = maintainService.insert(maintain);
         if (isOK1) {
             model.addAttribute("errormsg","新增成功");
