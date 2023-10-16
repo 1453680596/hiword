@@ -13,7 +13,7 @@
 <body>
 <form id="form1" name="form1" method="post" action="${pageContext.request.contextPath}/maintain/insert">
     <table width="500" height="95" border="0" cellpadding="0" cellspacing="1" style="background-color: #3A8ECD; color: #000;"><tr>
-        <td><input type = "text" style="visibility:hidden" name = "id" value="${maintain.id}"></td>
+
         <tr>
             <td width="114" height="30" align="right" valign="middle" bgcolor="#FFFFFF">客户姓名：</td>
             <td width="227" height="20" align="left" valign="middle" bgcolor="#FFFFFF">
