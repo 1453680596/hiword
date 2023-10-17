@@ -4,6 +4,7 @@ import com.mycom.myapp.pojo.Customer;
 import com.mycom.myapp.pojo.CustomerCar;
 import com.mycom.myapp.pojo.Feedback;
 import com.mycom.myapp.pojo.Maintain;
+import com.mycom.myapp.service.CustomerCarService;
 import com.mycom.myapp.service.CustomerService;
 import com.mycom.myapp.service.FeedbackService;
 import com.mycom.myapp.service.MaintainService;
@@ -22,6 +23,8 @@ public class MaintainController {
     private MaintainService maintainService;
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private CustomerCarService customerCarService;
 
     @RequestMapping("/toSelect")
     public String toSelect( Model model) {
@@ -64,12 +67,21 @@ public class MaintainController {
         Customer customer=new Customer();
         customer.setName(maintain.getName());
         List<Customer> customerList = customerService.select(customer);
-        if (customerList!=null && customerList.size()>0){
+        if (customerList.size()==0){
             model.addAttribute("errormsg","用户不存在");
             return "maintain";
         }
         maintain.setCustomerId(customerList.get(0).getId());
-
+  //
+        CustomerCar customerCar=new CustomerCar();
+        customerCar.setCarnumber(maintain.getCarnumber());
+        List<CustomerCar> customerCarList= customerCarService.select(customerCar);
+        if (customerCarList.size()==0){
+            model.addAttribute("errormsg","车牌号错误");
+            return "maintain";
+        }
+        
+///
         Boolean isOK1 = maintainService.insert(maintain);
         if (isOK1) {
             model.addAttribute("errormsg","新增成功");
